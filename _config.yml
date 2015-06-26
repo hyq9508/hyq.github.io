@@ -6,7 +6,7 @@ email: hyq9508@gmail.com
 description: "Have a big dream!" # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
 keywords: "web html css js jquery"
 baseurl: "/hyq9508.github.io" # the subpath of your site, e.g. /blog
-url: "http://hyq9508.github.io/" # the base hostname & protocol for your site
+url: "http://hyq9508.github.io" # the base hostname & protocol for your site
 locale: en_US
 
 ### Personal info and site tools info:
