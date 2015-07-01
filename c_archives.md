@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Archives
+title: 存档
 permalink: /archives/
 ---
 

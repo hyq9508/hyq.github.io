@@ -1,16 +1,10 @@
-Freshman21
+hyq9508
 ==========
-
-Freshman21 is a Jekyll blog theme, base on theme [Freshman](http://github.com/yulijia/freshman). 
-
-A tribute to WordPress Theme Twenty-Twelve and Twenty-eleven.
 
 Enjoy.
 
 
-![Screen](http://i.imgur.com/oSp7kacl.png)
-
-### Version 2.0 update 2015.03.31
+### Version 2.0 update 2015.06.26
 
 - master branch: the simplest template, original version.
 
@@ -18,21 +12,21 @@ Enjoy.
 
 Clone master branch: 
  
-`git clone https://github.com/yulijia/freshman21.git -b master --single-branch`
+`git clone https://github.com/hyq9508/hyq9508.github.io.git -b master --single-branch`
  
 Clone gh-pages branch: 
  
-`git clone https://github.com/yulijia/freshman21.git -b gh-pages --single-branch`
+`git clone https://github.com/hyq9508/hyq9508.github.io.git -b gh-pages --single-branch`
 
 
 ### How to install this theme?
 
 ```
-# please make sure you have already installed git tools and ruby tools(gem)
+# please make sure you have already installed git tools and ruby tools(gem) python(pygments)
 $ gem install sass
 $ gem install jekyll
-$ git clone https://github.com/yulijia/freshman21.git
-$ mv freshman21/ yourblogname.github.io/
+$ git clone https://github.com/hyq9508/hyq9508.github.io.git
+$ mv hyq9508/ yourblogname.github.io/
 ```
 
 ### A Summary of Features
@@ -44,10 +38,5 @@ $ mv freshman21/ yourblogname.github.io/
 - Syntax highlighting
 
 
-### Demo
-
-Single column, please see [my own blog](http://yulijia.net/en/)
-
-Two columns, please see the [theme website](http://yulijia.net/freshman21/)
 
 

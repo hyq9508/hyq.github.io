@@ -12,7 +12,6 @@ locale: en_US
 ### Personal info and site tools info:
 github_username:  hyq9508
 disqus_shortname: hyq
-favicon:     "images/favicon.ico"
 aboutme: 一个没事儿就喜欢出去旅游出去浪的程序媛 # these are shown on aboutme-sidebar.
 aboutme_photo: images/aboutme.jpg # your photo.
 
@@ -20,7 +19,7 @@ aboutme_photo: images/aboutme.jpg # your photo.
 ### Site setting:
 ShowContactInfo: "True" # Personal Info (weibo,github,email) can be seen on aboutme-sidebar, those info only shown when ShowContactInfo == True
 default_column: "two" # blog style: two columns, if default_column != "two", you will see a one column blog.
-default_locale: "en" # blog sidebar language set, only include: English(en) and Chinese (cn)
+default_locale: "cn" # blog sidebar language set, only include: English(en) and Chinese (cn)
 
 locales:
     en:
