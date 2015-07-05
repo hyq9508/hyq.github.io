@@ -33,10 +33,14 @@ aboutme_photo: images/aboutme.jpg
 在主页时，查看图片路径，正常；进到关于页面时，图片路径出错。原来是进入该页面时，所有的文章都进入到相应的目录下比如<code>about/index.html</code>,而我把图片的路径设置为了相对路径，那么图片的路径也就会变成<code>about/image/aboutme_photo.jpg</code>，因此出错。
 
 只要把路径改为绝对路径，即相对于blog的根目录的路径：<code>aboutme_photo: /images/aboutme.jpg</code>
+
+
 ---------------------------------------------------------
+
 ###jekyll在windows下中文编码报错
 
 ####1.问题描述
+
 
 用jekyll写一个之前已经写了一半的页面时，编译时发现编码报错，这是搞什么鬼啊啊啊，仔细想过之后找到了问题所在，之前写的时候是拿sublime写的，这回为了方便就直接用记事本写的，记事本的默认编码是<code>ASNI</code>的啊，我之前设置的jekyll读取本地文件的方式是<code>UTF-8</code>,因此出现了问题.
 
