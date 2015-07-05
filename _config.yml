@@ -1,7 +1,7 @@
 ﻿### Site info:
 title: Yinqi Huang' blog
-tagline: Have a big dream!
-author: Yinqi Huang
+tagline: 好好努力，天天学习!
+author: 黄殷琪
 email: hyq9508@gmail.com
 description: "Have a big dream!" # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
 keywords: "web html css js jquery"
@@ -13,7 +13,7 @@ locale: en_US
 github_username:  hyq9508
 disqus_shortname: hyq
 aboutme: 一个没事儿就喜欢出去旅游出去浪的程序媛 # these are shown on aboutme-sidebar.
-aboutme_photo: images/aboutme.jpg # your photo.
+aboutme_photo: /images/aboutme.jpg # your photo.
 
 
 ### Site setting:

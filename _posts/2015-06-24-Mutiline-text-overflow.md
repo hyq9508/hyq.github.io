@@ -16,7 +16,7 @@ comment: true
 
 ##2.多行文本溢出显示
 
-###Webkit浏览器或移动端
+###1.Webkit浏览器或移动端
 
 在webkit为内核的浏览器或移动端（绝大部分是webkit内核的浏览器）的页面实现比较简单，可以直接使用似有的css扩展属性<code>-webkit-line-clamp</code>,该属性的作用是用来限制块元素显示文本的行数，使用时还要结合其他属性，如下：
 
@@ -26,7 +26,7 @@ comment: true
 使用例子：
 <iframe width="100%" height="300" src="//jsfiddle.net/donqi/j2do1o9o/embedded/result,css,html,js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-###使用::after伪元素实现
+###2.使用::after伪元素实现
 
 这个办法可以跨浏览器兼容，使用::after伪元素在文本后添加一个省略号(...),看起来效果是还可以的
 使用例子：
@@ -39,9 +39,9 @@ comment: true
 3. 注意要给<code>::after</code>的内容添加一个背景色，可以父元素的背景色一样，也可以用一个渐变色做背景，效果更好（PS：我的例子透明度还不太恰当，可以再调）
 4. IE8中要将<code>::after</code>改为<code>:after</code>，IE6.7中不能显示content的内容，需在内容中加入一个标签，比如<span>...</span>
 
-###JS模拟实现
+###3.JS模拟实现
 
-####Clamp.js
+####1.Clamp.js
 
 下载地址：[https://github.com/josephschmitt/Clamp.js](https://github.com/josephschmitt/Clamp.js "github下载地址")
 
@@ -52,7 +52,7 @@ var module = document.getElementById("clamp-this-module");
 $clamp(module, {clamp: 2});
 {% endhighlight %}
 
-####JQuery.dotdotdot
+####2.JQuery.dotdotdot
 
 下载地址：[https://github.com/BeSite/jQuery.dotdotdot或http://dotdotdot.frebsite.nl/](https://github.com/BeSite/jQuery.dotdotdot或http://dotdotdot.frebsite.nl/, "下载及详细文档下载")
 
