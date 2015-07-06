@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 学习笔记
+title: 学习笔记(一)之DOM空白符，window.getComputedStyle获取样式表
 modified: 2015-06-27
-categories: [html5, localstorge, javascript, css]
+categories: [html5, DOM, javascript, css]
 tags:
   - html5
   - css
@@ -162,3 +162,5 @@ function node_after( sib )
 var ele= document.getElementById('t');
 var style=ele.currentStyle?ele.currentStyle:window.getComputedStyle(ele, null);
 {% endhighlight %}
+
+东西太多了，明天再继续写吧~
