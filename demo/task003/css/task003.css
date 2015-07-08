@@ -1,0 +1,269 @@
+*{
+	margin:0;
+	padding: 0;
+/*	font-family: Arial, Tahoma, Helvetica,  sans-serif;*/
+	font-weight: normal;
+	font-size: 16px;
+}
+
+
+
+.header h1{
+	line-height: 1.6em;
+	font-size: 1.6em;
+}
+h2,h3,p,span,textarea,li,.right input{
+	font-size: 1.3em;
+}
+li{
+	list-style-type: none;
+}
+/***---------------以下是总体布局样式：-----------***/
+
+#overlay{
+	display: none;
+	z-index: 9;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.6);
+}
+
+.demo{
+	width: 100%;
+	height: 100%;
+	
+}
+
+.header{
+	position: absolute;
+	height: 60px;
+	width: 100%;
+	background-color: grey;
+	background-color: rgba(67,77,132,0.8);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.wrap{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	top: 60px;
+}
+.left,.middle,.right{
+	position: absolute;
+	height: 100%;
+}
+
+.left,.middle{
+	width: 200px;
+	min-width: 200px;
+	border-right: 1px solid #000;
+
+}
+.left{
+	left: 0;
+	bottom: 0;
+	background-color: #544;
+	background-color: rgba(206,202,202,1);
+}
+.middle{
+	left: 201px;
+	bottom: 0px;
+	background-color: rgba(206,202,202,0.5);
+}
+.right{
+	left: 402px;
+	bottom: 0;
+	right: 0;
+}
+#popup{
+	display: none;
+	position: absolute;
+	border: 1px solid #000;
+	width: 360px;
+	height: 200px;
+	top: 50%;
+	margin-top: -100px;
+	left: 50%;
+	margin-left: -180px;
+	text-align: center;
+	background-color: #fff;
+	z-index: 10;
+}
+/****给左侧和中间的内容列表与下方的按钮分开，在列表内容太多的时候，不会影响按钮****/
+div.list_content{   
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 50px;
+	overflow: auto;
+}
+.add_btn{
+	display: block;
+	position: absolute;
+	bottom: 0;
+	width: 200px;
+	height: 50px;
+	text-align: center;
+	cursor: pointer;
+	border: none;
+	background-color: rgba(79,91,158,0.5);
+}
+
+.add_btn:hover{
+	background-color: rgba(79,91,158,1);
+}
+
+/***---------------以上是总体布局样式：-----------***/
+
+/**left*/
+.list_content h2{
+	padding-left: 10px;
+	margin-bottom: 0.3em;
+}
+#task-list h3, #task-list li{
+	cursor: pointer;
+}
+
+
+#task-list h3{
+	padding-left: 15px;
+}
+#task-list ul>li{
+	padding-left: 30px;
+	line-height: 1.8;
+}
+#task-list h3:hover,#task-list ul>li:hover{
+	background-color: rgba(255,255,254,0.7);
+}
+
+.active{
+	background-color: rgba(255,255,254,0.7);
+}
+/**middle**/
+
+div#btn-status{
+	width: 200px;
+	height: 80px;
+	border-bottom: 1px dashed #000;
+}
+div#btn-status button{
+	margin-left: 0.312em;
+	margin-top: 1em;
+	width: 3.43em;
+	height: 2.4em;
+	cursor: pointer;
+}
+
+ul#task-info li:nth-child(even){
+	background-color: #fff;
+	cursor: pointer;
+}
+/***right****/
+
+.right #task_title{
+	width: 100%;
+	height: 50px;
+	background-color: rgba(79,91,158,0.6);
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.right span{
+	line-height: 40px;
+}
+.right #task_date{
+	width: 100%;
+	height: 50px;
+	background-color: rgba(79,91,158,0.3);
+}
+.right input,.right label{
+	display: none;
+	line-height: 35px;
+}
+.right input{
+	margin-top: 5px;
+}
+
+#inputarea{
+	display: none;
+	position: absolute;
+	border: 0;
+	width: 100%;
+	top: 100px;
+	bottom: 50px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+
+}
+
+#taskcontent #mark{
+	background-color: rgb(25,3,5);
+	position: absolute;
+	display: block;
+	top: 10px;
+	right: 10px;
+	width: 40px;
+	height: 40px;
+}
+
+#textarea{
+	width: 100%;
+	height: 400px;
+	line-height: 1.8;
+	font-size: 1.6em;
+	overflow: hidden;
+
+}
+#right_btn{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 60px;
+	bottom: 0;
+	left: 0;
+}
+
+#right_btn button{
+	width: 60px;
+	height: 40px;
+	margin-left: 20px;
+	margin-top: 15px;
+	cursor: pointer;
+}
+/**弹出框*/
+
+#popup h3{
+
+}
+
+#popup p{
+	line-height: 1.8;
+	padding-top: 20px;
+
+}
+
+#popup button{
+	width: 70px;
+	height: 40px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+#popup button:first-of-type{
+	margin-right: 50px;
+}
+
+#popup input,#popup select{
+	height: 30px;
+	font-size: 20px;
+	width: 173px;
+}
+.warnning{
+	border: 1px solid red;
+}

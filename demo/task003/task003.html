@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>personal control</title>
+	<!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/task003.css">
+</head>
+<body>
+	<div id="overlay"></div>
+	<div class="demo">
+		<div class="header">
+			<h1>DGT Tools</h1>
+		</div>
+		<div class="wrap">
+			<div class="left">
+				<div class="list_content">
+					<h2 id="init_active">所有任务</h2>
+					<div id="task-list">
+					</div>
+				</div>
+				<button class="add_btn">新增分类</button>
+			</div>
+			<div class="middle">
+				<div id="btn-status">
+					<button id="all-task">所有</button>
+					<button id="finished-task">已完成</button>
+					<button id="unfished-task">未完成</button>
+				</div>
+				<div>
+					<ul id="task-info">
+					</ul>
+				</div>
+				<button class="add_btn">新增任务</button>
+			</div>
+			<div class="right">
+				<div id="task_title"><span></span>
+					<label for="yourtitle">标题：</label><input id="yourtitle" type="text">
+				</div>
+				<div id="task_date"><span></span>
+					<label for="yourdate">日期：</label><input type="date" id="yourdate">
+				</div>
+				<p id="task_content"></p>
+				<div id="inputarea">
+					<textarea id="textarea" placeholder="请输入内容"></textarea>
+				</div>
+				<div id="right_btn">
+					<button>保存</button>
+					<button>舍弃</button>
+				</div>
+			</div>
+		</div>
+		<div id="popup">
+			<p>
+				<label for="master">选择主分类:</label>
+			    <select id="master">
+			    	<option selected >新建列表</option>
+			    	<option >默认列表</option>
+			    </select>
+			</p>
+			<p>
+				<label for="child_list">列表名称:</label>
+				<input id="child_list" type="text" placeholder="请输入列表名称" />
+			</p>
+			<button id="cancel_pop">取消</button>
+			<button id="ensure_pop">确认</button>
+		</div>
+	</div>
+
+
+
+	<script  src="js/task003.js"></script>
+</body>
+</html>
