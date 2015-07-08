@@ -64,56 +64,74 @@ div{
 
 在这里要注意以下几点：
 
-* IE8及以下添加监听使用的是attchEvent，并且响应函数里传的element节点，而addEventlistener响应函数里传的是点击事件
+* IE8及以下添加监听使用的是attchEvent，并且响应函数里this的值是window对象而不是触发事件的元素
 * 获取元素之前的宽高时，用先获取到元素的宽高，这里就可以用我们之前讨论过的方法，IE用element.currentStyle,其他用<code>window.getComputedStyle(element,[, pseudoElt])</code>,不清楚的看这里->[获取样式表](/_posts/2015-06-27-project-conclude.md)
+* 利用parseInt转化类型时，如果在字符串开始处无法获得任何数字，会返回NaN，IE中用currentStyle获取样式表的话，如果margin未定义的话，值是auto
+* 想要获取元素的最终样式，如果你这么写：
 
 {% highlight javascript lineons %}
-//在document上监听鼠标事件
-		if (document.addEventListener) {//其他浏览器和IE8以上都支持
-			document.addEventListener('mouseover',bigger,false);
-			document.addEventListener('mouseout', smaller, false);
-		} else if(document.attachEvent){//IE8一下事件监听使用的是attachEvent
-			document.attachEvent('onmouseover',bigger);
-			document.attachEvent('onmouseout',smaller);
-		};
-/**attachEvent传的参数是element节点，addeventlistener传的参数是事件对象，函数返回element*/
-		function returnNode (e) {
-			if (e.target) {//假设node传过来的是事件对象
-				return e.target;
-			} else{//传过来的是节点对象
-				return e;
-			};
-		}
-
-		/**div变大***/
-		function bigger (node) {
-			var e=returnNode(node);
-			if (!!e&&e.nodeName.toUpperCase()=="DIV") {
-				e.style.zIndex=100;
-				var style=window.getComputedStyle(e)||e.currentStyle;//非IE和IE
-
-				e.style.width=1.2*parseInt(style.width)+"px";//宽度放大1.2倍
-				e.style.height=1.2*parseInt(style.height)+"px";//高度放大1.2倍
-				e.style.marginTop=(parseInt(style.marginTop)-20)+"px";
-				e.style.marginLeft=(parseInt(style.marginLeft)-20)+"px";
-				e.style.backgroundColor="red";
-			};
-		}
-		/**鼠标离开时，图片恢复原样**/
-		function smaller (node) {
-			var e=returnNode(node);
-			if (!!e&&e.nodeName.toUpperCase()=="DIV") {
-				e.style.zIndex=0;
-				var style=window.getComputedStyle(e)||e.currentStyle;//非IE和IE
-				e.style.width=parseInt(style.width)/1.2+"px";
-				e.style.height=parseInt(style.height)/1.2+"px";//高度缩减1.2倍
-				e.style.marginTop=(parseInt(style.marginTop)+20)+"px";
-				e.style.marginLeft=(parseInt(style.marginLeft)+20)+"px";
-				e.style.backgroundColor="grey";
-			};
-		}
-		
+var style=window.getComputedStyle(e)||e.currentStyle;
 {% endhighlight %}
 
+IE8及以前就会报错，说不支持getComputedStyle属性或方法，IE中，如果碰到未定义的变量就会开始报错，不管是不是在if判断句还是或运算符前，不知道这不是一个bug啊，按理说第一句为假的时候应该要判断后面一句的啊，现在我们只能调换顺序了
+
+js代码如下：
+
+{% highlight javascript lineons %}
+/**attachEvent响应函数中this的值会变成window对象而不是触发事件的元素*/
+	function returnEvent(e) {
+		if (e.target) {
+			return e.target;	
+		} else if(e.srcElement){
+			return e.srcElement;
+		};
+	}；
+		/**针对IE中currentStyle获取到的属性值可能是auto，导致转化成int时出现NaN的情况**/
+	function improInt (attr) {
+		if (parseInt(attr)) {
+			return parseInt(attr);
+		} else{
+			return 0;
+		};
+	}
+	/**div变大***/
+	function bigger(e) {
+		var node=returnEvent(e);
+		if (!!node&&node.nodeName.toUpperCase()=="DIV") {
+			node.style.zIndex=100;
+			var style=(node.currentStyle||window.getComputedStyle(node));//非IE和IE
+			node.style.width=1.2*improInt(style.width)+"px";//宽度放大1.2倍
+			node.style.height=1.2*improInt(style.height)+"px";//高度放大1.2倍
+			node.style.marginTop=(improInt(style.marginTop)-20)+"px";
+			node.style.marginLeft=(improInt(style.marginLeft)-20)+"px";
+			node.style.backgroundColor="red";
+		};
+	}
+	/**鼠标离开时，图片恢复原样**/
+	function smaller(e) {
+		var node=returnEvent(e);
+		console.log("returnEvent(e)"+returnEvent(e));
+		if (!!node&&node.nodeName.toUpperCase()=="DIV") {
+			node.style.zIndex=0;
+			var style=node.currentStyle||window.getComputedStyle(node);//非IE和IE
+			node.style.width=improInt(style.width)/1.2+"px";
+			node.style.height=improInt(style.height)/1.2+"px";//高度缩减1.2倍
+			node.style.marginTop=(improInt(style.marginTop)+20)+"px";
+			node.style.marginLeft=(improInt(style.marginLeft)+20)+"px";
+			node.style.backgroundColor="grey";
+		};
+	}
+	//在document上监听鼠标事件
+	if (document.addEventListener) {//其他浏览器和IE8以上都支持
+		document.addEventListener('mouseover',bigger,false);
+		document.addEventListener('mouseout', smaller, false);
+	} else if(document.attachEvent){//IE8及以下下事件监听使用的是attachEvent
+		document.attachEvent('onmouseover',bigger);
+		document.attachEvent('onmouseout',smaller);
+	};
+	
+{% endhighlight %}
+
+####具体实现：
 
 具体实现：[DEMO例子](/demo/changeSize.html)

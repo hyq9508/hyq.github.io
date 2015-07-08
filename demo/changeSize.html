@@ -32,47 +32,54 @@
 	<div id="left2"></div>
 
 	<script >
-		/**attachEvent传的参数是element节点，addeventlistener传的参数是事件对象，函数返回element*/
-		function returnNode (e) {
-			if (e.target) {//假设node传过来的是事件对象
-				return e.target;
-			} else{//传过来的是节点对象
-				return e;
+		/**attachEvent响应函数中this的值会变成window对象而不是触发事件的元素*/
+		function returnEvent(e) {
+			if (e.target) {
+				return e.target;	
+			} else if(e.srcElement){
+				return e.srcElement;
+			};
+		};
+		/**针对IE8以下获取到的属性值可能是auto，导致转化成int时出现NaN的情况**/
+		function improInt (attr) {
+			if (parseInt(attr)) {
+				return parseInt(attr);
+			} else{
+				return 0;
 			};
 		}
-
 		/**div变大***/
-		function bigger (node) {
-			var e=returnNode(node);
-			if (!!e&&e.nodeName.toUpperCase()=="DIV") {
-				e.style.zIndex=100;
-				var style=window.getComputedStyle(e)||e.currentStyle;//非IE和IE
-
-				e.style.width=1.2*parseInt(style.width)+"px";//宽度放大1.2倍
-				e.style.height=1.2*parseInt(style.height)+"px";//高度放大1.2倍
-				e.style.marginTop=(parseInt(style.marginTop)-20)+"px";
-				e.style.marginLeft=(parseInt(style.marginLeft)-20)+"px";
-				e.style.backgroundColor="red";
+		function bigger(e) {
+			var node=returnEvent(e);
+			if (!!node&&node.nodeName.toUpperCase()=="DIV") {
+				node.style.zIndex=100;
+				var style=(node.currentStyle||window.getComputedStyle(node));//非IE和IE
+				node.style.width=1.2*improInt(style.width)+"px";//宽度放大1.2倍
+				node.style.height=1.2*improInt(style.height)+"px";//高度放大1.2倍
+				node.style.marginTop=(improInt(style.marginTop)-20)+"px";
+				node.style.marginLeft=(improInt(style.marginLeft)-20)+"px";
+				node.style.backgroundColor="red";
 			};
 		}
 		/**鼠标离开时，图片恢复原样**/
-		function smaller (node) {
-			var e=returnNode(node);
-			if (!!e&&e.nodeName.toUpperCase()=="DIV") {
-				e.style.zIndex=0;
-				var style=window.getComputedStyle(e)||e.currentStyle;//非IE和IE
-				e.style.width=parseInt(style.width)/1.2+"px";
-				e.style.height=parseInt(style.height)/1.2+"px";//高度缩减1.2倍
-				e.style.marginTop=(parseInt(style.marginTop)+20)+"px";
-				e.style.marginLeft=(parseInt(style.marginLeft)+20)+"px";
-				e.style.backgroundColor="grey";
+		function smaller(e) {
+			var node=returnEvent(e);
+			console.log("returnEvent(e)"+returnEvent(e));
+			if (!!node&&node.nodeName.toUpperCase()=="DIV") {
+				node.style.zIndex=0;
+				var style=node.currentStyle||window.getComputedStyle(node);//非IE和IE
+				node.style.width=improInt(style.width)/1.2+"px";
+				node.style.height=improInt(style.height)/1.2+"px";//高度缩减1.2倍
+				node.style.marginTop=(improInt(style.marginTop)+20)+"px";
+				node.style.marginLeft=(improInt(style.marginLeft)+20)+"px";
+				node.style.backgroundColor="grey";
 			};
 		}
 		//在document上监听鼠标事件
 		if (document.addEventListener) {//其他浏览器和IE8以上都支持
 			document.addEventListener('mouseover',bigger,false);
 			document.addEventListener('mouseout', smaller, false);
-		} else if(document.attachEvent){//IE8一下事件监听使用的是attachEvent
+		} else if(document.attachEvent){//IE8及以下下事件监听使用的是attachEvent
 			document.attachEvent('onmouseover',bigger);
 			document.attachEvent('onmouseout',smaller);
 		};
