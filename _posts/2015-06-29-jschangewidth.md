@@ -2,9 +2,10 @@
 layout: post
 title: JS控制鼠标悬浮时放大元素，不影响其他元素布局
 modified: 2015-06-29
-categories: [javascript,EventListener]
+categories: [javascript]
 tags:
   - javascript
+  - EventListener
   - 布局
 comment: true
 ---

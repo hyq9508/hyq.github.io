@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>事件代理委托</title>
+	<style type="text/css">
+		button{
+			width: 50px;
+			height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<button>4</button>
+	<button>5</button>
+	<button>6</button>
+	<button>7</button>
+	<button>8</button>
+	<button>9</button>
+	<button>10</button>
+	<button>11</button>
+	<script type="text/javascript">
+		if (document.addEventListener) {//支持w3c标准事件模型
+			document.addEventListener('click',function(e) {
+				if (e.target.nodeName.toUpperCase()==='BUTTON') {
+					var buttonList=document.getElementsByTagName('button');
+					for (var i = 0; i < buttonList.length; i++) {
+						if (e.target===buttonList[i]) {
+							console.log("button:"+(i+1));
+						};
+					};
+				};
+			},false);
+		} else if (document.attachEvent) {//IE低版本
+			console.log("进入attachevent");
+			var buttonList=document.getElementsByTagName('button');
+			for (var i = 0; i < buttonList.length; i++) {
+				(function(j) {
+					buttonList[j].onclick=function() {
+						console.log("button:"+j+1);
+					}
+				})(i);
+			};
+		};
+	</script>
+</body>
+</html>
