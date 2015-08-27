@@ -10,6 +10,7 @@ comment: true
 
 ###问题描述
 
+
 在servlet中可能经常会出现中文乱码的情况，大致分为以下三种
 * 表单处理(get/post)
 * 超链接(<a href="www.baidu.com?name=测试"></a>)
