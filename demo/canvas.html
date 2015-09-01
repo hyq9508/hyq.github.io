@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas test</title>
+	<style type="text/css">
+	body{
+		background-color:#000;
+	}
+	#mycanvas1{
+		background-color:#fff;
+	}
+	#mycanvas2{
+		background-color:#fff;
+	}
+	</style>
+	<script type="text/javascript">
+		function  $(id) {
+		return document.getElementById(id);
+		}
+	</script>
+</head>
+<body>
+<canvas id="mycanvas1" width="300" height="300">
+	your brower doesn't support canvas!
+</canvas>
+
+<canvas id="mycanvas2" width="300" height="300">
+	your brower doesn't support canvas!
+</canvas>
+
+
+<script type="text/javascript">
+	var ct = $('mycanvas1');
+	var ctx = ct.getContext('2d');
+	ct.onmousedown = function(event) {
+		var event = event||window.event;
+		ctx.moveTo(event.clientX-ct.offsetLeft,event.clientY-ct.offsetTop);
+		ct.onmousemove=function(event) {
+			var event = event||window.event;
+			ctx.lineTo(event.clientX-ct.offsetLeft,event.clientY-ct.offsetTop);
+			ctx.stroke();
+		};
+	}
+
+	var ck = $('mycanvas2');
+	var ckx = ck.getContext('2d');
+	var num = 0;
+	ckx.fillRect(0,0,40,40);
+	setInterval(function() {
+		num++;
+		ckx.clearRect(0,0,ck.width,ck.height);
+		ckx.fillRect(num,num,40,40);
+		if (num > 260) {
+			num = 0;
+		};
+	},30);
+
+
+
+	document.onmouseup=function(event) {
+		ct.onmousemove = null;
+		//ck.onmousemove = null;
+	};
+
+
+
+
+
+
+</script>
+</body>
+</html>
